@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use LVR\CountryCode\Two;
 
 class StoreShipmentRequest extends FormRequest
@@ -27,13 +28,13 @@ class StoreShipmentRequest extends FormRequest
         return [
             "recipient_address" => ['required'],
             "recipient_address.street_name" => ['required'],
-            "recipient_address.street_number" => ['required'],
+            "recipient_address.street_number" => ['required', 'integer', 'min:1'],
             "recipient_address.country_code" => ['required', new Two],
             "recipient_address.first_name" => ['required'],
             "recipient_address.last_name" => ['required'],
             "recipient_address.phone" => ['required'],
-            "number_of_items" => ['required', ],
-            "service_code" => ['required'],
+            "number_of_items" => ['required', 'integer', 'min:1'],
+            "service_code" => ['required', Rule::in(['express', 'economy'])],
         ];
     }
 }

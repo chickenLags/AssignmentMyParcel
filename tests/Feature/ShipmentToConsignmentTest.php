@@ -28,7 +28,7 @@ class ShipmentToConsignmentTest extends TestCase
             "service_code" => "express"
         ];
 
-        $response = $this->json('POST', '/shipments', $jsonRequest);
+        $response = $this->json('POST', '/api/shipments', $jsonRequest);
 
         $response->assertStatus(200);
 
