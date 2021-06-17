@@ -15,8 +15,32 @@ class ShipmentToConsignmentTest extends TestCase
      */
     public function test_routeReachable()
     {
-        $response = $this->post('/shipments');
+        $jsonRequest = [
+            "recipient_address" => [
+                "street_name" => "STREET_NAME",
+                "street_number" => 19,
+                "country_code" => "NL",
+                "first_name" => "Firstname",
+                "last_name" => "Lastname",
+                "phone" => "+1231231231"
+            ],
+            "number_of_items" => 4,
+            "service_code" => "express"
+        ];
+
+        $response = $this->json('POST', '/shipments', $jsonRequest);
+
         $response->assertStatus(200);
+
+        $jsonResponse = $jsonRequest;
+
+        $jsonResponse['tracking_code'] = "forwarded value from the remote api";
+        $jsonResponse['deliver_at'] = "2021-01-30";
+        $response->assertJson($jsonResponse);
+
+
+
+
     }
 
 //    public function test_

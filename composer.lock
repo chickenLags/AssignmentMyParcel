@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7759431e303e2d722a264a8a991a9e84",
+    "content-hash": "886565721ab4c403e85bf66220c8055b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -857,6 +857,57 @@
             "time": "2021-04-26T09:17:50+00:00"
         },
         {
+            "name": "laravel-validation-rules/country-codes",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-validation-rules/country-codes.git",
+                "reference": "d31a870b2ea1e45adf3cdedcb88b520bced8a539"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-validation-rules/country-codes/zipball/d31a870b2ea1e45adf3cdedcb88b520bced8a539",
+                "reference": "d31a870b2ea1e45adf3cdedcb88b520bced8a539",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.5|^6.0|^7.0|^8.0",
+                "league/iso3166": "^3.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5|^4.0|^5.0",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LVR\\CountryCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ashley Clarke",
+                    "email": "me@ashleyclarke.me"
+                }
+            ],
+            "description": "Validate country codes.",
+            "keywords": [
+                "country",
+                "laravel",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-validation-rules/country-codes/issues",
+                "source": "https://github.com/laravel-validation-rules/country-codes/tree/v3.0.0"
+            },
+            "time": "2021-01-25T14:59:53+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.47.0",
             "source": {
@@ -1287,6 +1338,63 @@
                 }
             ],
             "time": "2020-08-23T07:39:11+00:00"
+        },
+        {
+            "name": "league/iso3166",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/iso3166.git",
+                "reference": "9976d382f270ad3f3df8a68719beb7a7179ffa1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/iso3166/zipball/9976d382f270ad3f3df8a68719beb7a7179ffa1e",
+                "reference": "9976d382f270ad3f3df8a68719beb7a7179ffa1e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\ISO3166\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com"
+                }
+            ],
+            "description": "ISO 3166-1 PHP Library",
+            "homepage": "https://github.com/thephpleague/iso3166",
+            "keywords": [
+                "3166",
+                "3166-1",
+                "ISO 3166",
+                "countries",
+                "iso",
+                "library"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/iso3166/issues",
+                "source": "https://github.com/thephpleague/iso3166"
+            },
+            "time": "2020-12-05T06:50:42+00:00"
         },
         {
             "name": "league/mime-type-detection",

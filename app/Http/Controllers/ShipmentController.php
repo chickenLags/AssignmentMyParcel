@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreShipmentRequest;
 use App\Models\Shipment;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class ShipmentController extends Controller
@@ -33,9 +35,17 @@ class ShipmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreShipmentRequest $request)
     {
-        //
+        $json = $request->validated();
+
+
+
+        $json['tracking_code'] = "forwarded value from the remote api";
+        $json['deliver_at'] = "2021-01-30";
+
+
+        return response()->json($json);
     }
 
     /**

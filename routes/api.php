@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShipmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->post('shipments', [\App\Http\Controllers\ShipmentController::class, ])
+Route::post('/shipments', [ShipmentController::class, 'store']);
