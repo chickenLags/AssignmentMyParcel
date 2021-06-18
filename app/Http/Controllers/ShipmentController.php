@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreShipmentRequest;
+use App\Http\Resources\ConsignmentResource;
+use App\Http\Resources\ShipmentResource;
+use App\Models\Address;
 use App\Models\Shipment;
-use http\Env\Response;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class ShipmentController extends Controller
@@ -33,19 +36,22 @@ class ShipmentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \  $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(StoreShipmentRequest $request)
+    public function store(StoreShipmentRequest $request, Client $client)
     {
-        $json = $request->validated();
+        $data = $request->validated();
+        $shipment = new Shipment($data);
+        $shipment->recipientAddress = new Address($data['recipient_address']);
 
+        $consignmentResource = new ConsignmentResource($shipment);
+        $response = $client->request('POST', 'http://foreign-server.com/consignment', ['query' => $consignmentResource->toArray($request)] );
+        $contents = json_decode($response->getBody()->getContents());
 
-
-        $json['tracking_code'] = "forwarded value from the remote api";
-        $json['deliver_at'] = "2021-01-30";
-
-
-        return response()->json($json);
+        $shipment->tracking_code = $contents->tracking_code;
+        $shipment->deliver_at = $contents->deliver_at;
+        return response()->json(new ShipmentResource($shipment));
     }
 
     /**
