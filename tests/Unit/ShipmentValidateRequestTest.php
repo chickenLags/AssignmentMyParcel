@@ -36,7 +36,7 @@ class ShipmentValidateRequestTest extends TestCase
      *
      * @return void
      */
-    public function test_acceptsCorrectExampleRequest()
+    public function test_acceptsCorrectJsonrequest()
     {
         $validator = Validator::make($this->jsonRequest, $this->rules);
         $this->assertTrue($validator->passes());
@@ -49,7 +49,7 @@ class ShipmentValidateRequestTest extends TestCase
      *
      * @return void
      */
-    public function test_allFieldsAreRequired()
+    public function test_testThatAllFieldsOnJsonrequestAreRequired()
     {
         $requestCollection = collect($this->jsonRequest);
 
@@ -95,7 +95,7 @@ class ShipmentValidateRequestTest extends TestCase
      *
      * @return void
      */
-    public function test_RejectsValidCountryCodes()
+    public function test_RejectsInvalidCountryCodes()
     {
         $invalidCountryCode = 'AA';
 

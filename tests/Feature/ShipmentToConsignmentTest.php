@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use Illuminate\Foundation\Testing\WithFaker;
+use GuzzleHttp\Psr7\Response;
 use Tests\TestCase;
 
 class ShipmentToConsignmentTest extends TestCase
@@ -40,9 +40,9 @@ class ShipmentToConsignmentTest extends TestCase
 
     protected function bindGuzzleMock(): void
     {
-        app()->bind(Client::class, function ($app) {
+        app()->bind(Client::class, function () {
             $mock = new MockHandler([
-                new \GuzzleHttp\Psr7\Response(200, [], json_encode([
+                new Response(200, [], json_encode([
                     'tracking_code' => 'forwarded value from the remote api',
                     'deliver_at' => '2021-01-30'
                 ]))
@@ -94,7 +94,7 @@ class ShipmentToConsignmentTest extends TestCase
 
     /**
      * Tests that Guzzle reached out to the correct endpoint.
-     * Asserts that the route foreign-server.com/consigment was called.
+     * Asserts that the route foreign-server.com/consignment was called.
      *
      * @return void
      */
